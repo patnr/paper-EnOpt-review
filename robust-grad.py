@@ -9,7 +9,6 @@ from pathlib import Path
 import pickle
 
 import matplotlib.pyplot as plt
-from mpl_tools.place import freshfig
 import numpy as np
 import numpy.random as rnd
 from scipy.special import hermite
@@ -66,7 +65,10 @@ def J1(x, u):
 
 ## Illustrate
 uu = np.linspace(-2, 2, 201)
-fig, ax = freshfig("Elements of the experiments")
+fignum = "Elements of the experiments"
+fig = plt.figure(fignum)
+fig.clear()
+fig, ax = plt.subplots(num=fignum)
 nHermite = 7
 cm = plt.color_sequences["tab10"]
 for iHermite in range(nHermite):

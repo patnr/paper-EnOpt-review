@@ -7,7 +7,6 @@ import pickle
 
 import colorama as colr
 import matplotlib.pyplot as plt
-from mpl_tools.place import freshfig
 # from toolz import sort_legend
 import numpy as np
 from pandas import pandas as pd  # type: ignore
@@ -231,8 +230,11 @@ stat_kinds = {k: stat_kinds[k] for k in stat_kinds
 # Enlarge panel of stat0
 stat_kinds[stat0] = 10
 
-fig, axs = freshfig(
-    "Results", squeeze=False, ncols=len(ds0.coords["iHermite"]),
+fignum = "Elements of the experiments"
+fig = plt.figure(fignum)
+fig.clear()
+fig, axs = plt.subplots(num=fignum,
+    squeeze=False, ncols=len(ds0.coords["iHermite"]),
     # figsize=(10, 5),
     figsize=(5, 4),
     sharex=True, nrows=len(stat_kinds),
